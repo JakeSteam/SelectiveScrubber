@@ -1,3 +1,15 @@
 chrome.browserAction.onClicked.addListener(function(tab) {
-	alert("Did it work?");
+	chrome.history.search(
+		{
+			text: '*google.com*', 
+			startTime: 0,
+			endTime: 2147485546999,
+			maxResults: 9999}, 
+		function(results) {
+			var itemsDeleted = 0;
+			for (itemsDeleted; itemsDeleted < results.length; itemsDeleted++) {
+				chrome.history.deleteUrl({ url: results[itemsDeleted].url });
+			}
+			alert("Deleted " + itemsDeleted + " items.");
+		})
 });
