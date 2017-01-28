@@ -1,17 +1,29 @@
 {
-	"manifest_version": 2
+	"manifest_version": 2,
+	
 	"name": "Selective Scrubber",
-	"version": "1.0.0",
 	"description": "Those secret sites? Begone from my history!",
-	"icons": { "128": "icon_128.png" },
+	"version": "1.0.0",
+	"homepage_url": "https://github.com/JakeSteam/SelectiveScrubber",
+	"icons": { 
+		"24": "images/icon_24.png",
+		"48": "images/icon_48.png",
+		"96": "images/icon_96.png"
+	},
+		
+	"permissions": ["history"],
 	"background": {
 		"persistent": false,
-		"scripts": ["bg.js"]
+		"scripts": ["js/manager.js"]
 	},
-	"permissions": [],
+	
 	"browser_action": {
-		"default_title": "",
-		"default_icon": "icon_19.png",
-		"default_popup": "popup.html"
+		"default_icon": "images/icon_96.png"
+	},
+	
+	"options_page": "pages/options.html",
+	"options_ui": {
+		"chrome_style": true,
+		"page": "pages/options.html"
 	}
 }
