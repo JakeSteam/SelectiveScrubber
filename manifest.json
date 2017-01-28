@@ -14,7 +14,7 @@
 	"permissions": ["history"],
 	"background": {
 		"persistent": false,
-		"scripts": ["js/manager.js"]
+		"scripts": ["js/clear_history.js"]
 	},
 	
 	"browser_action": {
