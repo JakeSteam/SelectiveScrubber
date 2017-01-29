@@ -6,6 +6,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 
 function deleteBySites(storage) {
     var allSites = storage.sites.split("\n");
+	numSites = allSites.length;
     for (var i = 0; i < allSites.length; i++) {
         deleteBySite(allSites[i]);
     }
@@ -16,7 +17,7 @@ function deleteBySite(site) {
             text: site,
             startTime: 0,
             endTime: 2147485546999,
-            maxResults: 9999
+            maxResults: 999999
         },
         function(results) {
             var itemsDeleted = 0;
@@ -25,6 +26,19 @@ function deleteBySite(site) {
                     url: results[itemsDeleted].url
                 });
             }
-			alert("Deleted " + itemsDeleted + " for " + site);
+			siteDeleted(site, itemsDeleted);
         });
+}
+
+var numSites = 0;
+var sitesProcessed = 0;
+var siteString = "Scrub complete:\n";
+function siteDeleted(site, count) {
+	sitesProcessed++;
+	siteString += (count + "x " + site + "\n");
+	if (sitesProcessed >= numSites) {
+		alert(siteString);
+		sitesProcessed = 0;
+		siteString = "Scrub complete:\n";
+	}
 }
