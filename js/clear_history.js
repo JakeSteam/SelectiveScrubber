@@ -1,6 +1,7 @@
 chrome.browserAction.onClicked.addListener(function(tab) {
     chrome.storage.sync.get({
-        sites: 'supersecretsite.com'
+        sites: 'supersecretsite.com',
+		popup: false
     }, deleteBySites);
 });
 
@@ -8,11 +9,11 @@ function deleteBySites(storage) {
     var allSites = storage.sites.split("\n");
 	numSites = allSites.length;
     for (var i = 0; i < allSites.length; i++) {
-        deleteBySite(allSites[i]);
+        deleteBySite(allSites[i], storage.popup);
     }
 }
 
-function deleteBySite(site) {
+function deleteBySite(site, popup) {
     chrome.history.search({
             text: site,
             startTime: 0,
@@ -26,7 +27,10 @@ function deleteBySite(site) {
                     url: results[itemsDeleted].url
                 });
             }
-			siteDeleted(site, itemsDeleted);
+			
+			if (popup) {
+				siteDeleted(site, itemsDeleted);
+			}
         });
 }
 

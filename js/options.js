@@ -1,15 +1,19 @@
 function save() {
     var sitesToSave = document.getElementById('sites').value;
+    var displayPopup = document.getElementById('popup').checked;
     chrome.storage.sync.set({
-        sites: sitesToSave
+        sites: sitesToSave,
+		popup: displayPopup
     }, displaySavedMessage);
 }
 
 function load() {
     chrome.storage.sync.get({
-        sites: 'supersecretsite.com'
+        sites: 'supersecretsite.com',
+		popup: false
     }, function(items) {
         document.getElementById('sites').value = items.sites;
+        document.getElementById('popup').checked = items.popup;
     });
 }
 
