@@ -25,5 +25,6 @@ function deleteBySite(site) {
                     url: results[itemsDeleted].url
                 });
             }
+			alert("Deleted " + itemsDeleted + " for " + site);
         });
 }

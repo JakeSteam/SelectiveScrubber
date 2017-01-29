@@ -1,4 +1,3 @@
-// Saves options to chrome.storage.sync.
 function save() {
     var sitesToSave = document.getElementById('sites').value;
     chrome.storage.sync.set({

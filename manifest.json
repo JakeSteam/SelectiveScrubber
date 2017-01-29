@@ -5,8 +5,7 @@
 	"description": "Those secret sites? Begone from my history!",
 	"version": "1.0.0",
 	"homepage_url": "https://github.com/JakeSteam/SelectiveScrubber",
-	"icons": { 
-		"24": "images/icon_24.png",
+	"icons": {
 		"48": "images/icon_48.png",
 		"96": "images/icon_96.png"
 	},
@@ -14,7 +13,7 @@
 	"permissions": ["history", "storage"],
 	"background": {
 		"persistent": false,
-		"scripts": ["js/clear_history.js", "options.js"]
+		"scripts": ["js/clear_history.js"]
 	},
 	
 	"browser_action": {
