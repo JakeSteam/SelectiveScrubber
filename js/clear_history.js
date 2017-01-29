@@ -10,6 +10,11 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 			for (itemsDeleted; itemsDeleted < results.length; itemsDeleted++) {
 				chrome.history.deleteUrl({ url: results[itemsDeleted].url });
 			}
-			alert("Deleted " + itemsDeleted + " items.");
+			
+			if (itemsDeleted > 0) {
+				alert("Deleted " + itemsDeleted + " items.");
+			} else {
+				alert("Nothing to delete!");
+			}
 		})
 });

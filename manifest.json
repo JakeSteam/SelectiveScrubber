@@ -11,19 +11,18 @@
 		"96": "images/icon_96.png"
 	},
 		
-	"permissions": ["history"],
+	"permissions": ["history", "storage"],
 	"background": {
 		"persistent": false,
-		"scripts": ["js/clear_history.js"]
+		"scripts": ["js/clear_history.js", "options.js"]
 	},
 	
 	"browser_action": {
 		"default_icon": "images/icon_96.png"
 	},
 	
-	"options_page": "pages/options.html",
 	"options_ui": {
-		"chrome_style": true,
-		"page": "pages/options.html"
+		"page": "options.html",
+		"chrome_style": true
 	}
 }
