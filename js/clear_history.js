@@ -5,7 +5,6 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 function deleteBySites(storage) {
-    alert(storage.sites);
     var allSites = storage.sites.split("\n");
     for (var i = 0; i < allSites.length; i++) {
         deleteBySite(allSites[i]);
@@ -26,9 +25,5 @@ function deleteBySite(site) {
                     url: results[itemsDeleted].url
                 });
             }
-
-            if (itemsDeleted > 0) {
-                alert("Deleted " + itemsDeleted + " items for: " + site);
-            }
-        })
+        });
 }
