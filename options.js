@@ -1,12 +1,23 @@
-function loadSites() {
-	alert("Sigh");
-	document.getElementById("site_box").value = localStorage.sites;
+// Saves options to chrome.storage.sync.
+function save() {
+    var site = document.getElementById('site').value;
+    chrome.storage.sync.set({siteList: site}, function() {
+        var status = document.getElementById('status');
+        status.textContent = 'Sites saved.';
+        setTimeout(function() {
+            status.textContent = '';
+        }, 750);
+    });
 }
 
-function saveSites() {
-	alert(document.getElementById("site_box").value);
-	localStorage.sites = document.getElementById("site_box").value;
+function load() {
+    chrome.storage.sync.get({
+        siteList: 'supersecretsite.com'
+    }, function(items) {
+        document.getElementById('site').value = items.siteList;
+    });
 }
 
-document.addEventListener('DOMContentLoaded', loadSites());
-document.getElementById('save').addEventListener('click', saveSites());
+document.addEventListener('DOMContentLoaded', load);
+document.getElementById('save').addEventListener('click',
+        save);
