@@ -16,8 +16,7 @@ function deleteBySites(storage) {
 function deleteBySite(site, popup) {
     chrome.history.search({
             text: site,
-            startTime: 0,
-            endTime: 2147485546999,
+			startTime: 0,
             maxResults: 999999
         },
         function(results) {
